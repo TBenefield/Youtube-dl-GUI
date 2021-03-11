@@ -9,11 +9,11 @@ const Storage = require('./storage.js')
 let mainWindow
 var filePath = __dirname;
 
-//storage file
+//This is the variable that determines what and where long term data is stored.
 const storage = new Storage({
 	configName: 'youtubedl-gui-local-data',
 	defaults: {
-		windowBounds: { width: 1000, height: 600},
+		windowBounds: { width: 1000, height: 800},
 		dlDirectory: app.getPath('videos'),
 		history: new Array()
 	}
@@ -39,8 +39,8 @@ function createWindow () {
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(menutemplate));
 	
-	//creates the storage file. I don't know if there is a better way to do it but
-	//	this is the best way to guarentee a storage file is made.
+	//Creates the storage file. I don't know if there is a better way to do it but
+	//	this is the best way to guarentee a storage file is made if there isn't one that already exists
 	storage.set('initiate', 'on');
 	
   // Create the browser window.

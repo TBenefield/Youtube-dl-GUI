@@ -18,7 +18,6 @@
 
   <script>
   function makeFileNameEditable() {
-		console.log("hi");
 	    if(document.getElementById('defaultCheck').checked) {
 			document.getElementById('fileName').readOnly = true;
 			document.getElementById('fileName').value = "";
@@ -27,12 +26,14 @@
 			document.getElementById('fileName').readOnly = false;
 	  }
 	  
+  //Switch to the history screen
   function toggleHistory() {
 	 	document.getElementById('downloadTab').style.display = "none";
 		document.getElementById('historyTab').style.display = "block";
 		document.getElementById('clearHistory').style.visibility = 'visible';
   }
   
+  //Switch to the download screen
   function toggleMain() {
 		document.getElementById('downloadTab').style.display = "block";
 		document.getElementById('historyTab').style.display = "none";
@@ -46,7 +47,7 @@
     <div class="row mb-3 py-2" style="background-color: black;">
       <div class="col"></div>
       <div class="col">
-        <h3 class="text-center text-truncate" style="color: tomato;">Video Downloader</h3>
+        <h3 class="text-center text-truncate" style="color: tomato;">Youtube-DL GUI</h3>
       </div>
       <div class="col"></div>
     </div>
@@ -60,7 +61,6 @@
     <div id="downloadTab" style="text-align:left" class="tabcnt">
     <!-- URL desired is put here. Youtube-dl handles the rest.  As long as they have the same type and id, these
         should be able to be placed anywhere. Feel free to mess with the styling -->
-
 <br />
 
     <div class="row">
@@ -93,7 +93,7 @@
 	  <div class="form-group" style="width:70%;">
 	    <div class="form-row no-gutter">
 	      <div class="input-group">
-	        <button onclick="openDialog()" style="width:8%">Browse</button>
+	        <button onclick="fileSelect()" style="width:100px">Browse</button>
             <input class="form-control" type="text" id="downloadDirectory" readonly />
 		  </div>
 		</div>
@@ -139,20 +139,34 @@
       </div>
       <div class="col"></div>
     </div>
+
+	<!--
+    Here is an example of what a loading object looks like in html:
+
+	<div class="row loadingObject" id='loadingObjects'>
+	  <strong class="loadingTitle" id="loadingTitle">Video Name.mp4</strong>
+	  <svg class="loadingBarSVG" id="loadingBarContainer">
+		  <g>
+		    <rect class="loadingBar" id="loadingBar" style="width: 50%"/>
+		    <text class="loadingPercent" x="50%" y="18" id="loadingPercent">50%</text>
+		  </g>
+		  <img class="spinner" src="spinner.gif" id="spinner"/>
+	  </svg>
+	  <p class="loadingInfo" id="loadingInfo">[download] 50%</p>
+	</div>
+
+	-->
+
+	<!-- Loading Stuff -->
+	<div id="loadingItems"></div>
 	
-	<center id='loadingObjects' style="display:none;">
-	<svg width="90%" height="50" id="loadingBarContainer" style="align:center;margin-top:2%;margin-bottom:2%;border-style:solid;">
-		<rect id="loadingBar" width="0" height="50" style="fill:rgb(0,150,0);stroke:black;stroke-width:4;"/>
-	</svg>
-	<img src="spinner.gif" id="spinner" width="30" height="30" />
-	<p id="loadingPercent" style="font-size:150%;"></p>
-	</center>
 </div>
 </div>
 
-<div class="container-fluid">
-<div id="historyTab" style="display:none">
-	<table id="historyTable">
+<!-- History Stuff -->
+<div class="container-fluid" width="100%">
+<div id="historyTab" width="100%" style="display:none;">
+	<table id="historyTable" width="100%" style="margin-right:0">
 		<tr>
 			<th id="title">Title</th>
 			<th id="downloadTime">Download Time</th>
@@ -162,16 +176,15 @@
 </div>
 </div>
 </div>
+<!--
   <footer class="footer">
     <p id="footer" class="text-center text-muted font-weight-bold" style="position:fixed;bottom:0;width:100%;">Copyright 2019 © Video Downloader. All Rights
       Reserved
     </p>
   </footer>
-
+-->
   <!-- You can also require other files to run in this process -->
   <script>
-
-
     function openTab(evt, tabAction) {
       // Declare all variables
       var t, tabcnt, tablnks;

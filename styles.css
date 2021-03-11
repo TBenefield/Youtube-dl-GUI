@@ -1,25 +1,85 @@
+/*for history table*/
 table {
 	border:solid;
 	border-width: 2px;
-	width: 80%;
 	margin-top: 2%;
 	font-size:120%;
 }
-
 tr {
 	border:solid;
 	border-width: 2px;
 }
-
 td {
 	border:solid;
 	border-width: 2px;
 }
-
 th {
 	border:solid;
 	border-width: 2px;
 	text-align: center;
+}
+
+/* for loading objects */
+.loadingObject {
+	padding-left: 1%;
+	padding-top: 4px;
+	
+	margin-left: 2%;
+	margin-bottom: 8px;
+	margin-right: 4%;
+	
+	height: 80px;
+	max-height: 80px;
+	font-family: Verdana;
+	
+}
+
+.loadingTitle {
+	word-break: break-all;
+	width: 40%;
+	max-width: 40%;
+	margin-right: 2%;
+	overflow-y: hidden;
+	font-size: 85%;
+	max-height: 60px;
+}
+
+.loadingBarSVG {
+	border-style: solid;
+	border-width: 2px;
+	width: 50%;
+	height: 30px;
+}
+
+g {
+	width: 500px;
+	height: 200px;
+}
+
+.loadingBar {
+	fill: rgb(0,150,0);
+	stroke-width: 0;
+	/*position: relative;*/
+}
+
+.loadingPercent {
+	font-weight: bold;
+	margin-left: 50%;
+}
+
+.spinner {
+	margin-left: 10px;
+	width: 30px;
+	height: 30px;
+}
+
+.loadingInfo {
+	word-break: break-all;
+	width: 40%;
+	margin-right: 2%;
+	overflow-y: hidden;
+	font-size: 75%;
+	max-height: 20px;
 }
 
 /* * {box-sizing: border-box}
